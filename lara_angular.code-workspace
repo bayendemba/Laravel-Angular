@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "frontend"
+		},
+		{
+			"path": "backend"
+		}
+	],
+	"settings": {
+		"eslint.enable": false
+	}
+}
