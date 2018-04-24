@@ -1,5 +1,5 @@
+import { LpnsService } from "./../../service/lpns.service";
 import { Component, OnInit } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: "app-signup",
@@ -16,15 +16,15 @@ export class SignupComponent implements OnInit {
   public error = [];
 
   onSubmit() {
-    return this.http
-      .post("http://localhost:8000/api/signup", this.form)
+    this.lpns
+      .signup(this.form)
       .subscribe(data => console.log(data), error => this.handleError(error));
   }
 
   handleError(error) {
     this.error = error.error.errors;
   }
-  constructor(private http: HttpClient) {}
+  constructor(private lpns: LpnsService) {}
 
   ngOnInit() {}
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { LpnsService } from "./../../service/lpns.service";
 
 @Component({
   selector: "app-login",
@@ -12,12 +13,11 @@ export class LoginComponent implements OnInit {
     password: null
   };
   public error = null;
-  constructor(private http: HttpClient) {}
+  constructor(private lpns: LpnsService) {}
 
   onSubmit() {
-    // console.log(this.form);
-    return this.http
-      .post("http://localhost:8000/api/login", this.form)
+    return this.lpns
+      .login(this.form)
       .subscribe(data => console.log(data), error => this.handleError(error));
   }
 
