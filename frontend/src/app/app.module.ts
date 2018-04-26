@@ -14,6 +14,8 @@ import { AppRoutingModule } from ".//app-routing.module";
 import { LpnsService } from "./service/lpns.service";
 import { TokenService } from "./service/token.service";
 import { AuthService } from './service/auth.service';
+import { AfterLoginService } from './service/after-login.service';
+import { BeforeLoginService } from './service/before-login.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,7 @@ import { AuthService } from './service/auth.service';
     ResponseResetComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
-  providers: [LpnsService, TokenService, AuthService],
+  providers: [LpnsService, TokenService, AuthService, AfterLoginService, BeforeLoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
