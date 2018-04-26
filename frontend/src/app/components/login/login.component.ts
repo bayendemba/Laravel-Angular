@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { LpnsService } from "./../../service/lpns.service";
+import { TokenService } from "../../service/token.service";
 
 @Component({
   selector: "app-login",
@@ -13,12 +14,19 @@ export class LoginComponent implements OnInit {
     password: null
   };
   public error = null;
-  constructor(private lpns: LpnsService) {}
+  constructor(private lpns: LpnsService, private token: TokenService) {}
 
   onSubmit() {
     return this.lpns
       .login(this.form)
-      .subscribe(data => console.log(data), error => this.handleError(error));
+      .subscribe(
+        data => this.handleResponse(data),
+        error => this.handleError(error)
+      );
+  }
+
+  handleResponse(data) {
+    this.token.handle(data.access_token);
   }
 
   handleError(error) {

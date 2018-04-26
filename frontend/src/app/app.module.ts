@@ -11,7 +11,8 @@ import { ProfileComponent } from "./components/profile/profile.component";
 import { RequestResetComponent } from "./components/password/request-reset/request-reset.component";
 import { ResponseResetComponent } from "./components/password/response-reset/response-reset.component";
 import { AppRoutingModule } from ".//app-routing.module";
-import { LpnsService } from './service/lpns.service';
+import { LpnsService } from "./service/lpns.service";
+import { TokenService } from "./service/token.service";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { LpnsService } from './service/lpns.service';
     ResponseResetComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
-  providers: [LpnsService],
+  providers: [LpnsService, TokenService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
