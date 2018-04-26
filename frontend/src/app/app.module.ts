@@ -13,6 +13,7 @@ import { ResponseResetComponent } from "./components/password/response-reset/res
 import { AppRoutingModule } from ".//app-routing.module";
 import { LpnsService } from "./service/lpns.service";
 import { TokenService } from "./service/token.service";
+import { AuthService } from './service/auth.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { TokenService } from "./service/token.service";
     ResponseResetComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
-  providers: [LpnsService, TokenService],
+  providers: [LpnsService, TokenService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

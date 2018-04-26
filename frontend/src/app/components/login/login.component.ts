@@ -1,7 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { LpnsService } from "./../../service/lpns.service";
+import { Router } from "@angular/router";
 import { TokenService } from "../../service/token.service";
+import { LpnsService } from "../../service/lpns.service";
+import { AuthService } from "../../service/auth.service";
 
 @Component({
   selector: "app-login",
@@ -14,7 +16,12 @@ export class LoginComponent implements OnInit {
     password: null
   };
   public error = null;
-  constructor(private lpns: LpnsService, private token: TokenService) {}
+  constructor(
+    private lpns: LpnsService,
+    private token: TokenService,
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
   onSubmit() {
     return this.lpns
@@ -27,6 +34,8 @@ export class LoginComponent implements OnInit {
 
   handleResponse(data) {
     this.token.handle(data.access_token);
+    this.authService.changeAuthStatus(true);
+    this.router.navigateByUrl("/profile");
   }
 
   handleError(error) {
